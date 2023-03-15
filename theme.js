@@ -1,6 +1,4 @@
-/**
- * Set the default theme to light if one has not been set in the browsers localStorage
- */
+/** Set the default theme to light if one has not been set in the browsers localStorage */
 function setDefaultTheme()
 {
     const theme = localStorage.getItem("mode") || "light-theme";
@@ -12,9 +10,7 @@ function setDefaultTheme()
     document.getElementById("icon-text").innerHTML = iconText;
 }
 
-/**
- * Set the HTML body to the user's selected theme. If one has not been selected, set the theme to light-theme
- */
+/** Set the HTML body to the user's selected theme. If one has not been selected, set the theme to light-theme */
 function setSelectedTheme()
 {
     document.body.classList.value = localStorage.getItem("mode") || "light-theme";
