@@ -27,7 +27,7 @@ addDessert(dessert) {
     this._desserts.push(dessert);
 }
 
-function getTotal() {
+getTotal() {
     let total = 0;
     
     let beverageTotal = this._beverages.forEach(function(beverage) {
