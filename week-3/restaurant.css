@@ -1,0 +1,13 @@
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    width: 550px;
+    height: 350px;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}
