@@ -11,3 +11,10 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
 }
+
+h1 {
+    background-color: white;
+    color: black;
+    font-weight: 400px;
+    border: none;
+}
