@@ -56,4 +56,4 @@ getTotal() {
     return total.toFixed(2);
     console.log("Total:" + total);
 
-}
+};
