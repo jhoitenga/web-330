@@ -164,26 +164,18 @@
                     // Creating variables for Beverages
                     const beveragesEl = document.getElementById("beverages");
                     const beverages = beveragesEl.getElementsByTagName("input");
-                    console.log(beveragesEl);
-                    console.log(beverages);
 
                     // Creating variables for Appetizers
                     const appetizersEl = document.getElementById("appetizers");
                     const appetizers = appetizersEl.getElementsByTagName("input");
-                    //console.log(appetizersEl);
-                    //console.log(appetizers);
 
                     // Creating variables for Main Courses
                     const mainCoursesEl = document.getElementById("main-courses");
                     const mainCourses = mainCoursesEl.getElementsByTagName("input");
-                    console.log(mainCoursesEl);
-                    console.log(mainCourses);
 
                     // Creating variables for Desserts
                     const dessertsEl = document.getElementById("desserts");
                     const desserts = dessertsEl.getElementsByTagName("input");
-                    //console.log(dessertsEl);
-                    //console.log(desserts);
                     
                     // Creating new instance of the Bill class
                     let bill = new Bill();
@@ -205,7 +197,7 @@
                     // If mainCourses is clicked, pass in name and value
                     for (let mainCourse of mainCourses) {
                         if (mainCourse.checked) {
-                            bill.mainCourse(new MainCourse(mainCourse.name, MainCourse.value));
+                            bill.mainCourse(new MainCourse(mainCourse.name, mainCourse.value));
                         }
                     }
 
