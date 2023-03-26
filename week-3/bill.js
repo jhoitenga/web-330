@@ -14,16 +14,16 @@ addBeverage(beverage) {
 }
 
 // Function to push appetizer to appetizer array
-function addAppetizer(appetizer) {
+addAppetizer(appetizer) {
     this._appetizers.push(appetizer);
 }
 
 // Function to push mainCourse to mainCourses array
-function mainCourse(mainCourse) {
+mainCourse(mainCourse) {
     this._mainCourses.push(mainCourse);
 }
 
-function addDessert(dessert) {
+addDessert(dessert) {
     this._desserts.push(dessert);
 }
 
