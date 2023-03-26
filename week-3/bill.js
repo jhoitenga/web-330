@@ -1,6 +1,6 @@
 // Creating a class named Bill with four properties with empty arrays
 export class Bill {
-    constructor (_beverages, _appetizers, _mainCourses, _desserts)
+    constructor (_beverages, _appetizers, _mainCourses, _desserts) {
 
     this._beverages = [];
     this._appetizers = [];
