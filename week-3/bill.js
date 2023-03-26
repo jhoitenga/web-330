@@ -40,7 +40,7 @@ getTotal() {
         console.log("Appetizer price: " + appetizer.price);
     });
 
-    let mainCourseTotal = this._mainCourse.forEach(function(mainCourse) {
+    let mainCourseTotal = this._mainCourses.forEach(function(mainCourse) {
         total += parseFloat(mainCourse.price);
         console.log("Main Course price: " + mainCourse.price);
     });
