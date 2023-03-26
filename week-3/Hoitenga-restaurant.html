@@ -164,8 +164,8 @@
                     // Creating variables for Beverages
                     const beveragesEl = document.getElementById("beverages");
                     const beverages = beveragesEl.getElementsByTagName("input");
-                    //console.log(beveragesEl);
-                    //console.log(beverages);
+                    console.log(beveragesEl);
+                    console.log(beverages);
 
                     // Creating variables for Appetizers
                     const appetizersEl = document.getElementById("appetizers");
@@ -205,14 +205,14 @@
                     // If mainCourses is clicked, pass in name and value
                     for (let mainCourse of mainCourses) {
                         if (mainCourse.checked) {
-                            bill.addMainCourse(new MainCourse(mainCourse.name, MainCourse.value));
+                            bill.mainCourse(new MainCourse(mainCourse.name, MainCourse.value));
                         }
                     }
 
                     // If desserts is clicked, pass in name and value
                     for (let dessert of desserts) {
                         if (dessert.checked) {
-                            bill.Dessert(new Dessert(dessert.name, dessert.value));
+                            bill.addDessert(new Dessert(dessert.name, dessert.value));
                         }
                     }
                     

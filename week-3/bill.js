@@ -50,7 +50,7 @@ getTotal() {
         console.log("Dessert price: " + dessert.price);
     });
 
-    console.log("Total:" + total);
+    console.log("Total: " + total);
     
     // Adjusting the total variable to two decimal points
     return total.toFixed(2);
