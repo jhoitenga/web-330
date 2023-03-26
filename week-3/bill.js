@@ -54,4 +54,5 @@ getTotal() {
     
     // Adjusting the total variable to two decimal points
     return total.toFixed(2);
-
+}
+}
