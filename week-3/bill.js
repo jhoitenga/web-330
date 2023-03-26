@@ -9,7 +9,7 @@ export class Bill {
 }
 
 // Function to push beverage to beverage array
-function addBeverage(beverage) {
+addBeverage(beverage) {
     this._beverages.push(beverage);
 }
 
