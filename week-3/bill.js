@@ -1,8 +1,6 @@
-import { Appetizer } from "./appetizer";
-
 // Creating a class named Bill with four properties with empty arrays
 export class Bill {
-    constructor (_beverages, _appetizers _mainCourses, _desserts)
+    constructor (_beverages, _appetizers, _mainCourses, _desserts)
 
     this._beverages = [];
     this._appetizers = [];
@@ -32,21 +30,30 @@ function addDessert(dessert) {
 function getTotal() {
     let total = 0;
     
-    let beverageTotal = this._beverages.array.forEach(function(beverage) {
+    let beverageTotal = this._beverages.forEach(function(beverage) {
         total += parseFloat(beverage.price);
-    })
+        console.log("Beverage price: " + beverage.price);
+    });
 
-    let appetizerTotal = this._appetizers.array.forEach(function(appetizer) {
+    let appetizerTotal = this._appetizers.forEach(function(appetizer) {
         total += parseFloat(appetizer.price);
-    })
+        console.log("Appetizer price: " + appetizer.price);
+    });
 
-    let mainCourseTotal = this._mainCourse.array.forEach(function(mainCourse) {
+    let mainCourseTotal = this._mainCourse.forEach(function(mainCourse) {
         total += parseFloat(mainCourse.price);
-    })
+        console.log("Main Course price: " + mainCourse.price);
+    });
 
-    let dessertTotal = this._desserts.array.forEach(function(dessert) {
+    let dessertTotal = this._desserts.forEach(function(dessert) {
         total += parseFloat(dessert.price);
-    })
+        console.log("Dessert price: " + dessert.price);
+    });
 
+    console.log("Total:" + total);
+    
+    // Adjusting the total variable to two decimal points
+    return total.toFixed(2);
+    console.log("Total:" + total);
 
 }
