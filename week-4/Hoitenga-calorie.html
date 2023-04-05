@@ -57,13 +57,15 @@
                     </div>
                 </div>
             </div>
-
             <div>
-                <br>
-                <!--Anchor-->
-                <a href="../index.html" class="return-home">Return</a>
-            </div>
+
+            <br>
         
+            <!--Anchor-->
+            <a href="../index.html" class="return-home">Return</a>
+        </div>
+        
+        <!--Creating Results Card-->
         <div class="assign-content">
             <div class="card">
                 <div class="card-title">Search Results</div>
@@ -78,7 +80,6 @@
             </div>
         </div>
     </div>   
-
         
 <!--JavaScript-->
 <script type="module">
@@ -86,7 +87,7 @@
 // Set the theme
 setSelectedTheme();
 
-// Import statement for the CalorieConverter class
+// Importing js file
 import { CalorieConverter } from "./calorie-converter.js";
 
 // Creating a variable named txtFoodItemEl and assigning to the txtFoodItem field
@@ -136,12 +137,9 @@ let foodListData = "<i>(Ex: ";
     foodListData = `${foodListData.slice(0,-2)})</i>`;
     
     document.getElementById("foodList").innerHTML = foodListData;
-      
-
-</script>
-
+    </script>
 
 </div>
 
-    </body>
+</body>
 </html>
