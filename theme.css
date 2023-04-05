@@ -143,7 +143,6 @@ body.dark-theme {
     --table-border-color: #303030;
     --table-hover-background-color: #7d4787;
     --table-hover-color: #fff;
-    --table-header-background-color: #D176E1;
 }
 
 table {
@@ -162,7 +161,7 @@ th {
 
 td, th {
     border-color: var(--table-border-color);
-    border-style: 1px solid #ddd;
+    border: 1px solid #ddd;
     padding-left: 10px;
 }
 
