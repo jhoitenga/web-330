@@ -163,6 +163,7 @@ td, th {
     border-color: var(--table-border-color);
     border: 1px solid #ddd;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 tr:hover {
