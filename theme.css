@@ -171,7 +171,7 @@ th {
 
 td, th {
     border-color: var(--table-border-color);
-    border-style: 1px solid;
+    border-style: 1px solid #ddd;
     padding: 8px;
     padding-left: 10px;
 }
