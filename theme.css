@@ -156,7 +156,7 @@ body.dark-theme {
 }
 
 table {
-    border-color: var(--table-border-color);
+    border-color: var(--heading-background-color);
     border-collapse: collapse;
 }
 
