@@ -155,17 +155,17 @@ body.dark-theme {
     --table-hover-color: #fff;
 }
 
-.table {
+table {
     border-color: var(--table-border-color);
     border-collapse: collapse;
 }
 
-.table th {
+th {
     background-color: var(--table-header-background-color);
     color: var(--table-header-color);
 }
 
-.table td, th {
+td, th {
     border-color: var(--table-border-color);
     border-style: solid;
     padding: 4px;
