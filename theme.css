@@ -158,24 +158,24 @@ body.dark-theme {
 table {
     border-color: var(--heading-background-color);
     border-collapse: collapse;
+    margin-bottom: 25px;
 }
 
 th {
     background-color: var(--table-header-background-color);
     color: var(--table-header-color);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
 }
 
 td, th {
     border-color: var(--table-border-color);
-    border-style: solid;
-    padding: 4px;
+    border-style: 1px solid;
+    padding: 8px;
 }
 
-.table-hover {
-
-}
-
-.table-hover:hover {
+.tr:hover {
     background-color: var(--table-hover-background-color);
     color: var(--table-hover-color);
     cursor: pointer;
