@@ -121,8 +121,8 @@ body.light-theme {
     --table-header-background-color: #4F3674;
     --table-header-color: #fff;
     --table-border-color: #ddd;
-    --table-hover-background-color: D6A800;
-    --table-hover-color: 4F3674;
+    --table-hover-background-color: #D6A800;
+    --table-hover-color: #4F3674;
 }
 
 body.dark-theme {
@@ -172,7 +172,6 @@ th {
 td, th {
     border-color: var(--table-border-color);
     border-style: 1px solid #ddd;
-    padding: 8px;
     padding-left: 10px;
 }
 
