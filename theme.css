@@ -9,7 +9,6 @@
     text-align: center;
     font-size: 2em;
     color: var(--card-title-color);
-    font-weight: 400;
 }
 
 .card-content {
