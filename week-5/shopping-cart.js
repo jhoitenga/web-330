@@ -8,7 +8,7 @@ function count() {
     return this.product.length;
 }
 
-function add(product) {
+function add() {
     this.products.push(product);
 }
 
