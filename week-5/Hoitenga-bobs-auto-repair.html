@@ -96,10 +96,6 @@ let shoppingCart = new ShoppingCart();
 
 setCartCount();
 
-// Creating a variable named txtFoodItemEl and assigning to the txtFoodItem field
-let txtFoodItemEl = document.getElementById("txtFoodItem");
-
-// Onclick event
 document.getElementById("btnAddProduct").onclick = function(){
 
     let productList = document.getElementById("productList").innerHTML;
@@ -123,22 +119,22 @@ document.getElementById("btnAddProduct").onclick = function(){
     document.getElementById("cartIcon").onclick = function() {
         let cartDisplayTable = `<table class="table"><tr><th>ID</th><th>Name</th><th>Price</th>`;
                     
-        for (let _products of shoppingCart) {
+        for (let products of shoppingCart) {
             cartDisplayTable += `
             <tr>
-                <td>${_products.id}</td>
-                <td>${_products.name}</td>
-                <td>${_products.price}</td>
-                </tr>`
-                console.log(_products);
+                <td>${products.id}</td>
+                <td>${products.name}</td>
+                <td>${products.price}</td>
+                </tr>`;
+                console.log(products);
             }
             
-            cartDisplayTable += `</table>`
+            cartDisplayTable += `</table>`;
             
             document.getElementById('shoppingCart').innerHTML = cartDisplayTable;
-        }
+        };
         
-        // This function adds a number to the shopping cart item list.
+       
         function setCartCount() {
             document.getElementById('cart-count').innerHTML = shoppingCart.count();
         }
