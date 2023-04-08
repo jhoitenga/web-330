@@ -7,3 +7,4 @@ export class Product {
         // Add a new property for id and generate a new random value
         this.id = Math.random().toString(16).slice(2);
     }
+}
