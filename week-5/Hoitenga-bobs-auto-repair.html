@@ -118,11 +118,11 @@ document.getElementById("btnAddProduct").onclick = function(){
         for (let products of shoppingCart) {
             cartDisplayTable += `
             <tr>
-                <td>${products.id}</td>
-                <td>${products.name}</td>
-                <td>${products.price}</td>
+                <td>${_products.id}</td>
+                <td>${_products.name}</td>
+                <td>${_products.price}</td>
                 </tr>`;
-                console.log(products);
+                console.log(_products);
             }
             
             cartDisplayTable += `</table>`;
