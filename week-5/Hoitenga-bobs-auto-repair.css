@@ -5,8 +5,15 @@
     letter-spacing: 2px;
 }
 
-:hover {
+i:hover {
     cursor: pointer;
+}
+
+#cartIcon {
+    margin: 0 0;
+    padding-left: 290px;
+    color: var(--card-title-color);
+    font-size: 28px;
 }
 
 #squish {
@@ -17,3 +24,5 @@
 .return-home {
     margin-left: 15%
 }
+
+
