@@ -115,7 +115,7 @@ document.getElementById("btnAddProduct").onclick = function(){
     document.getElementById("cartIcon").onclick = function() {
         let cartDisplayTable = `<table class="table"><tr><th>ID</th><th>Name</th><th>Price</th>`;
                     
-        for (let products of shoppingCart) {
+        for (let _products of shoppingCart) {
             cartDisplayTable += `
             <tr>
                 <td>${_products.id}</td>
