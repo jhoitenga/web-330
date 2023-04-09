@@ -19,5 +19,3 @@ addProduct(product){
     }
 }
 }
-
-console.log(shoppingCart.products);
