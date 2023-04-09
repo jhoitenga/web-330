@@ -1,19 +1,19 @@
 export class ShoppingCart {
     constructor(){
-        this._products = [];
+        this.products = [];
     }
 
 count(){
-    return this._products.length;
+    return this.products.length;
 }
 
 addProduct(product){
-    this._products.push(product);
+    this.products.push(product);
 }
 
 *[Symbol.iterator]()
 {   
-    for(let product of this._products)
+    for(let product of this.products)
     {
         yield product;
     }
