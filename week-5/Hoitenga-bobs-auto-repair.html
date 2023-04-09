@@ -100,7 +100,7 @@ setCartCount();
 document.getElementById("btnAddProduct").onclick = function(){
 
     let productList = document.getElementById("productList");
-
+    
     let product = productList.options[productList.selectedIndex].text;
 
     let productValue = productList.options[productList.selectedIndex].value;
@@ -108,7 +108,7 @@ document.getElementById("btnAddProduct").onclick = function(){
     if (product != "--Select--") {
         shoppingCart.addProduct(new Product(product,productValue));
         setCartCount();
-        alert('${product} was added to your shopping cart!');
+        alert(products + "was added to your shopping cart!");
             productList.value = "Select";
     }
 };
