@@ -20,6 +20,6 @@ export class FloatField {
     
     // Creating a function named getMessage() and return the string message
     getMessage() {
-        return this.name + " must be a float value. You entered " +  this.field;
+        return this.name + " must be a float value. You entered " +  this.field + ".";
     }
 }
