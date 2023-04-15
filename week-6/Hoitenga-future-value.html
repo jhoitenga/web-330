@@ -1,0 +1,216 @@
+<!-- 
+======================================
+; Title: Assignment 4.2 Calorie App
+; Author: Professor Itskovich
+; Date: April 15th, 2023
+; Modified By: Jennifer Hoitenga
+; Description: Experimenting with JavaScript by creating an application called Future Value App.
+; Sources Used: 
+; Web 330 HTML, CSS, and JavaScript Requirements
+; Mozilla Math.Pow: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow
+;=====================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="../theme.css">
+    <link rel="stylesheet" type="text/css" href="../site.css">
+    <link rel="stylesheet" type="text/css" href="Hoitenga-future-value.css">
+    <link rel="stylesheet" type="text/css" href="flex-layout.css">
+
+    <!--Calling the Theme JavaScript file-->
+    <script type="application/javascript" src="../theme.js"></script>
+    
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <title>WEB 330 – Enterprise JavaScript II</title>
+</head>
+
+<body class="light-theme">
+    <div id="container">
+        <h1 class="app-header" style="background-color: white; color: black; font-weight: 400; border: none;">Welcome to the Future Value App!</h1>
+
+        <div id="assign-content">
+            <div class="card" id="squish">
+                <div class="card-title">Future Value Calculator</div>
+                <div class="card-content">
+
+                    <!--Error Log-->
+                    <div class="row">
+                        <div class="col-12 danger right" id="errorLog"></div>
+                    </div>
+
+                    <div class="form">
+                            
+                            <!--Monthly Payment-->
+                            <div class="row">
+                                <div class="col-5 form-field">Monthly Payment:</div>
+                                <input class="col-7 input form-field form-label" id="txtMonthlyPayment" type="text">
+                            </div>
+
+                            <!--Interest Rate-->
+                            <div class="row">
+                                <div class="col-5 form-field">Interest Rate:</div>
+                                <input class="col-7 input form-field form-label" id="txtYearlyRate" type="text">
+                                <i class="danger right">Enter 11.1% as 11.1.</i>
+                            </div>
+                            
+                            <!--Number of Years-->
+                            <div class="row">
+                                <div class="col-5 form-field">Number of Years:</div>
+                                <select class="col-7 drop-down-menu" id="listNumOfYears">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-field">
+                                    <button class="btn btn-primary full-width" id="btnCalculate">Calculate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+        
+            <!--Anchor-->
+            <a href="../index.html" class="return-home">Return</a>
+        </div>
+        
+        <!--Creating Results Card-->
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">Calculation as of <span id="today"></span></div>
+                <div id="futureValue" class="assign-results-text card-content">
+            </div>
+        </div>
+    </div>
+
+        
+<!--JavaScript-->
+<script type="module">
+        
+// Set the theme
+setSelectedTheme();
+
+// Importing js files
+import { FinanceCalculator } from "./finance-calculator.js";
+import { Validator } from "./validator.js";
+
+// Set the innerHTML to a new JavaScript date object
+document.getElementById("today").innerHTML = new Date().toLocaleDateString("en-US");
+            
+            document.getElementById("btnCalculate").onclick = function() 
+            {
+                // Create a variable named monthlyPayment and assign it the value from the txtMonthlyPayment input field
+                let monthlyPayment = document.getElementById("txtMonthlyPayment").value;
+                
+                // Create a variable named rate and assign it the value from the txtYearlyRate input field
+                let rate = document.getElementById("txtYearlyRate").value;
+                
+                // Create a variable named years and assign it the value from the listNumOfYears select element
+                let years = document.getElementById("listNumOfYears").value;
+
+                // Create a variable named errorLogEl and assign it the element errorLog.
+                let errorLogEl = document.getElementById("errorLog");
+
+                // Instantiate a new Validator class supply it values Monthly Payment & the variable monthlyPayment and assign it as monthlyPaymentValidator
+                let monthlyPaymentValidator = new Validator("Monthly Payment", monthlyPayment);
+
+                // Call the addRequiredField() function on the monthlyPaymentValidator
+                monthlyPaymentValidator.addRequiredField();
+
+                // Call the addRequiredFloatFIeld() function on the monthlyPaymentValidator
+                monthlyPaymentValidator.addRequiredFloatField();
+
+                // Call the addFloatMinField() function on the monthlyPaymentValidator & supply it a value of 100
+                monthlyPaymentValidator.addFloatMinField(100);
+
+                // Instantiate a new Validator class supply it with the values “Interest Rate” & rate variable & assign it as rateValidator
+                let rateValidator = new Validator("Interest Rate", rate);
+
+                // Call the addRequiredField() function on the rateValidator
+                rateValidator.addRequiredField();
+
+                // Call the addRequiredFloatField() function on the rateValidator
+                rateValidator.addRequiredFloatField();
+
+                // Call the addFlaotMaxField() function on the rateValidator and supply it a value of 100
+                rateValidator.addFloatMaxField(100);
+                
+                // Create a variable named errorLog and set it to an empty array
+                let errorLog = [];
+
+                // Using an if statement, call the monthlyValidator.validate() function
+                // if the response is false
+                if (!monthlyPaymentValidator.validate()) {
+                    // use a for…of statement to iterate over the messages fields
+                    for (let msg of monthlyPaymentValidator.messages){
+                        // push each message to the errorLog variable
+                        errorLog.push(msg);
+                    }
+                }
+
+                // Using an if statement, call the rateValidator.validate() function
+                // if the response is false
+                if (!rateValidator.validate()) {
+                    // use a for…of statement to iterate over the messages field
+                    for (let msg of rateValidator.messages) {
+                        // push each message to the errorLog variable
+                        errorLog.push(msg);
+                    }
+                }
+
+                // Using an if…else statement, if monthlyPaymentValidator.validate() and rateValidator.validate() are true
+                // If true
+                if (rateValidator.validate() && monthlyPaymentValidator.validate()) {
+                    // Clear the errorLogEl.innerHTML
+                    errorLogEl.innerHTML = "";
+                    // Create a variable named futureValue & call the static calculateFutureValue off of the FinanceCalculator supply it w/the variables monthlyRate, rate, and years
+                    let futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
+                    let toCurrency = FinanceCalculator.convertToCurrency(futureValue);
+                    // Bind the futureValue results to the innerHTML of the futureValue div
+                    document.getElementById("futureValue").innerHTML =  `The future value is ${toCurrency}`;
+                    
+                   // if false
+                } else {
+                    // Clear the errorLogEl.innerHTML
+                    errorLogEl.innerHTML = "";
+
+                    // Create a variable named errorLogMessage & build an unordered list of the messages in the errorLog array
+                    let errorLogMessage = `<ul>`;
+
+                    // Bind the string errorLogMessage to the errorLogEl.innerHTML
+                    for (let message of errorLog) {
+                        errorLogMessage += `<li>${message}</li>`;
+                    }
+
+                    errorLogMessage += `</ul>`;
+
+                    errorLogEl.innerHTML = errorLogMessage;
+                }
+                
+            };  
+        </script>
+
+</body>
+</html>
