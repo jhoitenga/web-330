@@ -15,7 +15,7 @@ static calculateFutureValue(monthlyPayment, rate, years) {
     let interestRate = 1 + rate / 100;
     
     // Creating a variable named presentValue and assign it the monthlyPayment parameter times the months variable
-    let presentValue = monthlyPayments * months;
+    let presentValue = monthlyPayment * months;
     
     // Create a variable named futureValue and assign it the calculation: presentValue *(Math.pow(interestRate, months))
     let futureValue = presentValue * (Math.pow(interestRate, months));

@@ -189,7 +189,7 @@ document.getElementById("today").innerHTML = new Date().toLocaleDateString("en-U
                     let futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
                     let toCurrency = FinanceCalculator.convertToCurrency(futureValue);
                     // Bind the futureValue results to the innerHTML of the futureValue div
-                    document.getElementById("futureValue").innerHTML =  `The future value is ${toCurrency}`;
+                    document.getElementById("futureValue").innerHTML =  "The future value is " + toCurrency;
                     
                    // if false
                 } else {
