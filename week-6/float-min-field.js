@@ -21,7 +21,7 @@ export class FloatMinField {
 
     // Creating a function named getMessage() and return the string message
     getMessage() {
-        return this.name + "must be more than " +  this.min + ". You entered " + this.field;
+        return this.name + " must be more than " +  this.min + ". You entered " + this.field;
     }
 
 }
