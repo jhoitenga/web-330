@@ -21,6 +21,6 @@ export class FloatMaxField {
     
     // Create a function named getMessage() and return the string message
     getMessage() {
-        return this.name + " must be less than" +  this.max + ". You entered " + this.field;
+        return this.name + " must be less than " +  this.max + ". You entered " + this.field;
     }
 }
