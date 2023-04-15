@@ -1,8 +1,8 @@
 // Adding import statements for RequiredField, FloatField, FloatMinField, FloatMaxField
-import { RequiredField } from "./required-field.js"
-import { FloatField } from "./float-field.js"
-import { FloatMinField } from "./float-field-min.js"
-import { FloatMaxField } from "./float-field-max.js"
+import { RequiredField } from "./required-field.js";
+import { FloatField } from "./float-field.js";
+import { FloatMinField } from "./float-field-min.js";
+import { FloatMaxField } from "./float-field-max.js";
 
 export class Validator 
 {
