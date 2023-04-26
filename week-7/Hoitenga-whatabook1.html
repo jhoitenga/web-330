@@ -106,8 +106,7 @@ function loadBooks(xml) {
                     </thead>
                     <tbody>`;
 
-// Using a for…of statement, iterate over the books variable and append each XML object
-to the bookTable variable
+// Using a for…of statement, iterate over the books variable & append each XML object to the bookTable variable
 for (let book of books) {
     let isbn = book.getElementsByTagName("isbn")[0].childNodes[0].nodeValue;
     let title = book.getElementsByTagName("title")[0].childNodes[0].nodeValue;
@@ -154,8 +153,7 @@ for (let book of books) {
                 // Build an HTML string for an unordered list 
                 let bookData = `<ul style="list-style-type: none;">`;
 
-// Use a for…of loop to iterate over the data variable and append the iterated
-object dataset fields to the unordered list                   
+// Use a for…of loop to iterate over the data variable & append the iterated                 
 for (let field of data) {
     bookData += `<li><b>${field.dataset.value}</b>: ${field.innerHTML}</li>`;
 }
