@@ -1,0 +1,182 @@
+<!-- 
+======================================
+; Title: Assignment .2 Calorie App
+; Author: Professor Itskovich
+; Date: May 4, 2023
+; Modified By: Jennifer Hoitenga
+; Description: Experimenting with JavaScript by creating an application called What a Book
+; Sources Used: 
+; Web 330 HTML, CSS, and JavaScript Requirements
+;=====================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="../theme.css">
+    <link rel="stylesheet" type="text/css" href="../site.css">
+    <link rel="stylesheet" type="text/css" href="Hoitenga-whatabook.css">
+
+    <!--Calling the Theme JavaScript file-->
+    <script type="application/javascript" src="../theme.js"></script>
+    
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <title>WEB 330 – Enterprise JavaScript II</title>
+</head>
+
+<body class="light-theme">
+    <div id="container">
+        <h1 class="app-header" style="background-color: white; color: black; font-weight: 400px; border: none;">Welcome to the WhatABook, Part 2
+            App!</h1>
+
+        <div id="assign-content">
+            <div class="card" id="squish">
+                <div class="card-title">Book Listing</div>
+                <div class="card-content" id="bookList"></div>
+            </div>
+            <br>
+        
+            <!--Anchor-->
+            <a href="../index.html" class="return-home">Return</a>
+        </div>
+        
+        <!--Creating Results Card-->
+            <div class="card" id="squish">
+                <div class="card-title">Selected Book</div>
+                <div class="card-content" id="selectedBook"></div>
+            </div>
+        </div>
+    </div>   
+        
+<!--JavaScript-->
+<script type="module">
+     
+// Set the theme
+setSelectedTheme();
+
+// Add an import statement for the HttpClient class
+import { HttpClient } from "./http-client.js";
+
+// Instantiate a new HttpClient object & assign it to a new variable named http
+let http = new HttpClient();
+
+let book = {};
+
+// Create a variable named isbns & assign it an array of ISBN numbers
+let isbns = [
+    '0345339681',
+    '0261103571',
+    '9780593099322',
+    '9780261102361',
+    '9780261102378',
+    '9780590302715',
+    '9780316769532',
+    '9780743273565',
+    '9780590405959'
+];
+
+// Create an object literal named params with the following key/value pairs
+const params = {
+    "bibkeys": `ISBN: ${isbns.join(",")}`,
+    "format": "json",
+    "jscmd": "details"
+};
+
+// Call the http.get function and supply it with the open library URL & the params objects
+http.get("https://openlibrary.org/api/books", params).then(res => {  // Add a then clause using arrow functions with a res object
+    console.log(res);
+
+    // Call the buildHtmlString() function supply the res object & the string value “table” & bind the results to the bookListing div
+    document.getElementById("bookList").innerHTML = buildHtmlString(res, "table");
+    book = res;
+    
+    // Call the addIsbnClickEvents() function
+    addISBNClickEvents();
+})
+
+// Add a catch() statement arrow function for error & write the error to the console using the console.log() API
+.catch(e => {
+    console.log(e);
+});
+
+// Create a function named getBook() that accepts an event object
+function getBook(e)
+{
+    e.preventDefault();
+    
+    // Create a variable named self and assign it the value this
+    let self = this;
+    
+    // Create a variable named isbn and assign it the innerText of the self variable
+    let isbn = self.innerText;
+    
+    // Build a new params object literal
+    let obj = {};
+    obj [isbn] = book[isbn];
+    document.getElementById("selectedBook").innerHTML = buildHtmlString(obj);
+}
+
+// Create a function named buildHtmlString with two parameters: res and format.
+function buildHtmlString(res, format)
+{
+    // Create a variable named tableString, supply it with an HTML string for a table header
+    let tableString = `<table><tr><th>ISBN</th><th>Title</th><th>Description</th><th>Pages</th><th>Authors</th></tr>`;
+        // Create a variable named ulString and set it to an empty string
+        let ulString = '';
+        // Using a for…in iterate over the res parameter & append the objects to the ulString and tableString variables
+        for (const key in res)
+        {
+            if (res.hasOwnProperty(key)) {
+                let authors = [];
+                if (res[key].details.authors) {
+                    authors = res[key].details.authors.map(function(author) {
+                        return author.name;
+                    });
+                }
+                let bookDetails = res[key].details;
+                let book = {
+                    isbn: bookDetails.isbn_13 ? bookDetails.isbn_13 : bookDetails.isbn_10,
+                    title: bookDetails.title, 
+                    description: bookDetails.subtitle ? bookDetails.subtitle : "N/A",
+                    pages: bookDetails.number_of_pages ? bookDetails.number_of_pages : "N/A",
+                    authors : authors.join(", ")
+                };
+
+                    ulString += `<li><b>ISBN:</b> ${book.isbn}</li><li><b>Title:</b> ${book.title}</li><li><b>Description:</b> ${book.description}</li>
+                    <li><b>Pages:</b> ${book.pages}</li><li><b>Authors:</b> ${book.authors}</li>`;
+
+                    tableString += `<tr><td><a href="#" class="isbn-link">${book.isbn}</a></td><td>${book.title}</td><td>${book.description}</td>
+                        <td>${book.pages}</td><td>${book.authors}</td></tr>`;
+                    }
+
+                
+                }
+                ulString += "</ul>";
+                tableString += "</table>";
+                
+                //  If the format variable is a “table” return the tableString variable else return the ulString variable. 
+                return (format === "table") ? tableString : ulString;
+            }
+
+            
+            function addISBNClickEvents() {
+                let links = document.getElementsByClassName("isbn-link");
+                Array.from(links).forEach(element => {
+                    element.addEventListener("click", getBook);
+                });
+            }
+
+    </script>
+
+</div>
+
+</body>
+</html>
